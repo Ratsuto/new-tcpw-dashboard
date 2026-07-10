@@ -1,0 +1,16 @@
+# dependencies
+node_modules
+
+# next.js build output
+.next
+out
+build
+
+# generated / lockfiles
+package-lock.json
+next-env.d.ts
+
+# misc
+*.min.js
+public
+.idea
