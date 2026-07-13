@@ -72,7 +72,7 @@ export function ThemeCustomizer() {
         <Paintbrush className="size-5"/>
       </DrawerTrigger>
 
-      <DrawerContent>
+      <DrawerContent className={"bg-popover/70 backdrop-blur-xl border-gray-200 dark:border-zinc-700"}>
         <DrawerHeader className="border-b pb-4">
           <DrawerTitle>Customize</DrawerTitle>
           <DrawerDescription>

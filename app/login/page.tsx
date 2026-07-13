@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Eye, EyeOff, Loader2, Sparkles } from "lucide-react";
-import { toast } from "sonner";
+import {useRouter} from "next/navigation";
+import {Eye, EyeOff, Loader2, Sparkles} from "lucide-react";
+import {toast} from "sonner";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {Checkbox} from "@/components/ui/checkbox";
 import {
   Field,
   FieldGroup,
@@ -16,7 +16,8 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import Image from "next/image";
-import { basePath } from "@/lib/base-path";
+import {basePath} from "@/lib/base-path";
+import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -44,7 +45,8 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.55.12-3.23 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.68.24 2.92.12 3.23.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z" />
+      <path
+        d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.55.12-3.23 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.68.24 2.92.12 3.23.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/>
     </svg>
   );
 }
@@ -61,14 +63,16 @@ export default function LoginPage() {
     // Simulate an auth request. Replace with a real API call.
     await new Promise((resolve) => setTimeout(resolve, 800));
 
-    toast.success("Signed in successfully");
+    toast.success("Signed in successfully", {
+      position: "top-right",
+    });
     router.push("/dashboard");
   }
 
   return (
-    <div className="flex min-h-screen w-full">
+    <div className="flex items-center justify-center min-h-screen w-full">
       {/* Decorative panel */}
-      <div className="bg-primary/0 text-primary-foreground relative hidden w-2/3 flex-col justify-between overflow-hidden p-12 lg:flex">
+      {/*<div className="bg-primary/0 text-primary-foreground relative hidden w-2/3 flex-col justify-between overflow-hidden p-12 lg:flex">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklch,var(--primary-foreground),transparent_85%),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,color-mix(in_oklch,var(--primary-foreground),transparent_88%),transparent_55%)]" />
 
@@ -96,29 +100,29 @@ export default function LoginPage() {
             Sofia Ratsuto &mdash; Operations Lead
           </p>
         </div>
-      </div>
+      </div>*/}
 
       {/* Form panel */}
-      <div className="bg-background/0 flex w-full flex-1 items-center justify-center p-6 lg:w-1/3">
-        <div className="w-full max-w-sm">
-          <div className="mb-8 flex flex-col gap-2 text-center lg:text-left">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Welcome back
-            </h1>
-            <p className="text-muted-foreground text-sm">
-              Sign in to your account to continue
-            </p>
-          </div>
+      <Card className="w-full max-w-2xl mx-auto p-6 bg-card/70 backdrop-blur-xl">
+        <CardHeader>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Welcome back
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Sign in to your account to continue
+          </p>
+        </CardHeader>
 
+        <CardContent>
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             <FieldGroup>
               <div className="grid grid-cols-2 gap-3">
                 <Button type="button" variant="outline">
-                  <GoogleIcon data-icon="inline-start" className="size-4" />
+                  <GoogleIcon data-icon="inline-start" className="size-4"/>
                   Google
                 </Button>
                 <Button type="button" variant="outline">
-                  <GithubIcon data-icon="inline-start" className="size-4" />
+                  <GithubIcon data-icon="inline-start" className="size-4"/>
                   GitHub
                 </Button>
               </div>
@@ -129,9 +133,9 @@ export default function LoginPage() {
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
                   id="email"
-                  type="email"
+                  type="text"
                   placeholder="you@example.com"
-                  autoComplete="email"
+                  autoComplete="off"
                   required
                 />
               </Field>
@@ -164,16 +168,16 @@ export default function LoginPage() {
                     }
                   >
                     {showPassword ? (
-                      <EyeOff className="size-4" />
+                      <EyeOff className="size-4"/>
                     ) : (
-                      <Eye className="size-4" />
+                      <Eye className="size-4"/>
                     )}
                   </button>
                 </div>
               </Field>
 
               <Field orientation="horizontal">
-                <Checkbox id="remember" />
+                <Checkbox id="remember"/>
                 <FieldLabel htmlFor="remember" className="font-normal">
                   Remember me for 30 days
                 </FieldLabel>
@@ -181,13 +185,15 @@ export default function LoginPage() {
 
               <Field>
                 <Button type="submit" disabled={isSubmitting}>
-                  {isSubmitting && <Loader2 className="size-4 animate-spin" />}
+                  {isSubmitting && <Loader2 className="size-4 animate-spin"/>}
                   {isSubmitting ? "Signing in…" : "Sign in"}
                 </Button>
               </Field>
             </FieldGroup>
           </form>
+        </CardContent>
 
+        <CardFooter className={"justify-center"}>
           <p className="text-muted-foreground mt-8 text-center text-sm">
             Don&apos;t have an account?{" "}
             <Link
@@ -197,8 +203,8 @@ export default function LoginPage() {
               Sign up
             </Link>
           </p>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }

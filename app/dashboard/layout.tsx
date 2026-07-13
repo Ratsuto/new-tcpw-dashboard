@@ -73,7 +73,7 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <Sidebar collapsible="icon" className={"bg-background/70 backdrop-blur-xl ring-gray-200 dark:ring-zinc-700"}>
+      <Sidebar collapsible="icon" className={"bg-sidebar/70 backdrop-blur-xl ring-gray-200 dark:ring-zinc-700"}>
         <SidebarHeader>
           <div className="flex items-center gap-2 px-2 py-1.5">
             <div className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-xl">
@@ -155,7 +155,7 @@ export default function DashboardLayout({
       </Sidebar>
 
       <SidebarInset className={"bg-sidebar/0"}>
-        <header className="bg-background/70 supports-[backdrop-filter]:bg-background/70 sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b px-4 py-4 backdrop-blur-xl">
+        <header className="bg-sidebar/70 supports-[backdrop-filter]:bg-sidebar/70 sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b px-4 py-4 backdrop-blur-xl">
           <SidebarTrigger/>
           <Separator orientation="vertical" className="mr-2 h-full"/>
           <h1 className="text-base font-semibold">{title}</h1>
